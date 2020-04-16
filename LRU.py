@@ -3,8 +3,16 @@ class LRUCache:
         self.lrucache = []
         self.size = 6
     def put(self,item):
-        pass
+        if item not in self.lrucache:
+            if(len(self.lrucache)<self.size):
+                self.lrucache.append(item)
+            else:
+                self.lrucache.pop(0)
+                self.lrucache.append(item)        
+        else:
+            m1 = self.lrucache.remove(item)
+            self.lrucache.append(m1)
     def get(self):
-        pass
+        return self.lrucache[0]
     def get_cache(self):
-        pass
+        return self.lrucache
